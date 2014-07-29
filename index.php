@@ -1,21 +1,35 @@
 <?php
+
 require 'flight/Flight.php';
 require 'config.php';
 
+Flight::map('defaultRender', function($title) {
 
-Flight::route('/*', function(){
-    
-    Flight::render('core/head', array('title' => 'Title'), 'head_content');
+    Flight::render('core/head', array('title' => $title), 'head_content');
     Flight::render('core/header', '', 'header_content');
     Flight::render('core/footer', array('companyName' => 'Company Name'), 'footer_content');
     
+});
+
+Flight::route('/users(/@id:[0-9]+)', function($id) {
+
+    Flight::defaultRender('page title');
+    
+    Flight::render('users', array('user_id' => $id), 'main_content');
+    
+    Flight::render('core/layout');
+    
+});
+
+Flight::route('/', function() {
+
+    Flight::defaultRender('page title');
+    
     Flight::render('body', '', 'main_content');
     
-    Flight::render('core/layout', array('test' => 'Title'));
-    
-	
-	
+    Flight::render('core/layout');
+
 });
 
 Flight::start();
-?>
+
