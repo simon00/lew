@@ -13,6 +13,8 @@ Flight::route('/*', function(){
     
     Flight::render('core/layout', array('test' => 'Title'));
     
+	
+	
 });
 
 Flight::start();
