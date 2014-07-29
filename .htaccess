@@ -1,0 +1,10 @@
+# index file
+DirectoryIndex index.php
+
+# Rewrite engine
+RewriteEngine On
+
+# condition with escaping special chars
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
