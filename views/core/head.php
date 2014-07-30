@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 
-<link href=<?php echo $GLOBALS['root_dir'] . 'style/style.css'; ?> rel="stylesheet">
+<link href=<?php echo RELATIVE_BASEPATH . 'style/style.css'; ?> rel="stylesheet">
 
 <title><?php echo $title; ?></title>
 <!--[if lt IE 9]>
