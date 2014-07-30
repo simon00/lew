@@ -21,6 +21,16 @@ Flight::route('/users(/@id:[0-9]+)', function($id) {
     
 });
 
+Flight::route('/db_create', function() {
+
+    Flight::defaultRender('page title');
+    
+    Flight::render('db_create', '', 'main_content');
+    
+    Flight::render('core/layout');
+
+});
+
 Flight::route('/', function() {
 
     Flight::defaultRender('page title');
