@@ -11,13 +11,29 @@ Flight::map('defaultRender', function($title) {
     
 });
 
-Flight::route('/users(/@id:[0-9]+)', function($id) {
+Flight::map('render404', function() {
 
     Flight::defaultRender('page title');
     
-    Flight::render('users', array('user_id' => $id), 'main_content');
+    Flight::render('errors/404', '', 'main_content');
     
     Flight::render('core/layout');
+    
+});
+
+Flight::map('notFound', function(){
+
+    Flight::render404();
+
+});
+
+Flight::route('/users(/@id:[0-9]+)', function($user_id) {
+
+    if ( $user_id !== null ) {
+        include CTRLPATH . 'user.ctrl.php';
+    } else {
+        include CTRLPATH . 'users.ctrl.php';
+    }
     
 });
 

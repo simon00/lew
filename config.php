@@ -28,6 +28,7 @@ if (defined('ENVIRONMENT')) {
 $site_root = '/lew';
 $views_folder = 'views';
 $models_folder = 'models';
+$controlers_folder = 'controlers';
 
 /*
     Database
@@ -42,10 +43,10 @@ $db_password = '';
     //
 */
 
-$system_path = dirname(__FILE__);
-$system_path = realpath($system_path ).'/';
+$base_path = dirname(__FILE__);
+$base_path = realpath($base_path ).'/';
 
-define('BASEPATH', str_replace("\\", "/", $system_path));
+define('BASEPATH', str_replace("\\", "/", $base_path));
 define('RELATIVE_BASEPATH', $site_root . '/');
 
 if (is_dir($views_folder)) {
@@ -58,6 +59,12 @@ if (is_dir($models_folder)) {
     define('MODELSPATH', $models_folder . '/');
 } else {
     exit('Error : couldn\'t set MODELSPATH ' . $models_folder);
+}
+
+if (is_dir($controlers_folder)) {
+    define('CTRLPATH', $controlers_folder . '/');
+} else {
+    exit('Error : couldn\'t set CTRLPATH ' . $controlers_folder);
 }
 
 // Setting Flight view directory
