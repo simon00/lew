@@ -2,10 +2,12 @@
 
 require 'flight/Flight.php';
 require 'config.php';
+require 'messages.class.php';
 
 Flight::map('defaultRender', function($title) {
 
     Flight::render('core/head', array('title' => $title), 'head_content');
+    Flight::render('errors/messages', '', 'messages_content');
     Flight::render('core/header', '', 'header_content');
     Flight::render('core/footer', array('companyName' => 'Company Name'), 'footer_content');
     
@@ -25,6 +27,12 @@ Flight::map('notFound', function(){
 
     Flight::render404();
 
+});
+
+Flight::route('/sign-up', function() {
+
+    include CTRLPATH . 'signup.ctrl.php'; 
+    
 });
 
 Flight::route('/users(/@id:[0-9]+)', function($user_id) {

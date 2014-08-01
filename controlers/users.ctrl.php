@@ -12,6 +12,7 @@ $m_user = new M_Users($db);
 $users = $m_user->getUsers();
 $count = $m_user->c;
 
+
 // Render page
 Flight::defaultRender('page title');
     

@@ -9,6 +9,7 @@
         </header>
         
         <section id="content">
+            <?php echo $messages_content; ?>
             <?php echo $main_content; ?>
         </section>
         
