@@ -1,4 +1,4 @@
-<div id="content-main" class="container">
+<div id="content-main">
     
     <form action="#" method="post">
         
@@ -14,7 +14,7 @@
         <label for="password-confirm"> Confirmation </label>
         <input name="password-confirm" type="password" required>
         
-        <input type="submit" name="submit" id="submit" value="Sign-up !" />
+        <input type="submit" name="submit" value="Sign-up !" />
 
     </form>
 

@@ -41,14 +41,14 @@ body {
     padding-bottom: 2%;
 }
 
-footer {
-
-}
-
-.container {
+#content_inside {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+footer {
+
 }
 
 .separator {
@@ -64,7 +64,9 @@ footer {
 */
 
 header nav {
+    margin: auto;
     margin-bottom: 15px;
+    width: 79%;   
 }
 
 header nav a {
@@ -82,4 +84,20 @@ header nav a:hover {
 header nav li {
     float: right;
     margin-left: 3%;
+}
+
+/* 
+    Error Messages
+*/
+
+#errors_corp {
+    padding: 15px;
+    background: #c75573;
+    color: white;
+    border: 1px solid #bc2c52;
+    margin-bottom: 2%;
+}
+
+#errors_corp:hover {
+    cursor: pointer;
 }

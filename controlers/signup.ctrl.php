@@ -1,11 +1,16 @@
 <?php
 
 /**
-*   Sign-up controler
+*   Sign-up Controler
 */
 
 require_once(MODELSPATH . 'users.php');
 require_once('db/connect.php');
+
+// if user is already logged in, redirect to main page
+if ( isset($_SESSION['user_id']) ) {
+    Flight::redirect('/');
+}
 
 $m_user = new M_Users($db);
 
@@ -13,7 +18,6 @@ $m_user = new M_Users($db);
 $request = Flight::request();
 
 // Init signup data
-
 $values = array('username', 'email', 'password', 'password-confirm');
 
 $signup_data = array();
@@ -53,7 +57,8 @@ if ( $request->method === 'POST' ) {
     // Check email
     if ( isset($request->data['email']) ) {
         
-        if ( $m_user->emailExist($request->data['username']) ) {
+
+        if ( $m_user->emailExist($request->data['email']) ) {
             
             $error = true;
             Messages::add_error('This email is already used.');
@@ -108,32 +113,16 @@ if ( $request->method === 'POST' ) {
         
             Flight::redirect('/');
         
-        } else {
-        
-            Flight::defaultRender('page title');
-            
-            Flight::render('signup', array('signup_data' => &$signup_data, 'error' => 2), 'main_content');
-
-            Flight::render('core/layout');
-
         }
         
-    } else {
-    
-        Flight::defaultRender('page title');
-            
-        Flight::render('signup', array('signup_data' => &$signup_data, 'error' => 1), 'main_content');
-
-        Flight::render('core/layout');
-    
     }
     
-} else {
-
-    Flight::defaultRender('page title');
-        
-    Flight::render('signup', array('signup_data' => &$signup_data, 'error' => 0), 'main_content');
-
-    Flight::render('core/layout');
-    
 }
+
+Flight::defaultRender('page title');
+    
+Flight::render('signup', array('signup_data' => &$signup_data), 'main_content');
+
+Flight::render('core/layout');
+    
+

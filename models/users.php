@@ -71,10 +71,14 @@ class M_Users {
     
     }
     
-    public function &getUserLogin($pw, $name) {
-        $res = $this->statements['user_by_password']->execute(array(':pw' => $pw, ':name' => $name));
+    public function &getUserLogin($name, $pw) {
+        $stm = &$this->statements['user_by_password'];
         
-        return $res;
+        $stm->execute(array(':pw' => $pw, ':name' => $name));
+        
+        $this->data = $stm->fetch();
+        
+        return $this->data;
     }
     
     public function &getUsers() {

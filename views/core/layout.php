@@ -8,10 +8,12 @@
             <?php echo $header_content; ?>
         </header>
         
-        <section id="content">
-            <?php echo $messages_content; ?>
-            <?php echo $main_content; ?>
-        </section>
+        <div id="content">
+            <section id="content_inside">
+                <?php echo $messages_content; ?>
+                <?php echo $main_content; ?>
+            </section>
+        </div>
         
         <footer>
             <?php echo $footer_content; ?>

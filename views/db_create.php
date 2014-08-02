@@ -5,7 +5,7 @@ require_once('db/connect.php');
 $sql = file_get_contents('db/lew.sql');
 
 
-$qr = $db->exec($sql);
+$qr = $db->exec($sql) ;
 
 ?>
 
