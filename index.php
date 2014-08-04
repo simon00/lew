@@ -31,6 +31,8 @@ Flight::map('notFound', function(){
 
 });
 
+// START URL ROUTING
+
 Flight::route ('/logout', function() {
     session_destroy();
     Flight::redirect('/');
@@ -39,6 +41,12 @@ Flight::route ('/logout', function() {
 Flight::route('/sign-in', function() {
 
     include CTRLPATH . 'signin.ctrl.php'; 
+    
+});
+
+Flight::route('/msgs(/@id_sender:[0-9]+)', function($id_sender) {
+    
+    include CTRLPATH . 'messages.ctrl.php'; 
     
 });
 
