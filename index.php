@@ -59,9 +59,20 @@ Flight::route('/sign-up', function() {
 Flight::route('/users(/@id:[0-9]+)', function($user_id) {
 
     if ( $user_id !== null ) {
-        include CTRLPATH . 'user.ctrl.php';
+        
+        if ( isset($_SESSION['user_id']) && $_SESSION['user_id'] === $user_id ) {
+        
+            include CTRLPATH . 'my_profile.ctrl.php';
+        
+        } else {
+        
+            include CTRLPATH . 'user.ctrl.php';
+            
+        }
     } else {
+    
         include CTRLPATH . 'users.ctrl.php';
+    
     }
     
 });

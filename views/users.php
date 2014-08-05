@@ -13,7 +13,7 @@
         
         foreach ($users as $row) {
             echo '<tr>';
-            echo '<th>' . $row['user_name'] . '</th>';
+            echo '<th><a href="/lew/users/'. $row['user_id'] . '">' . $row['user_name'] . '</a></th>';
             echo '<th>' . $row['user_email'] . '</th>';
             echo '<th>' . $row['age'] . '</th>';
             echo '<th>' . $row['user_current_country'] . '</th>';
